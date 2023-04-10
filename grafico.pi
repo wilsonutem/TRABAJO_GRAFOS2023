@@ -1,0 +1,20 @@
+import pandas
+import matplotlib.pyplot as plt
+
+def recargaDatos(fichero, separador, inicial=0):
+    datos = pandas.read_csv(fichero, sep=separador)
+    for data in datos:
+        print(data)
+    x = datos['N']
+    y = datos['pi_value']
+    if inicial != 0:
+        x = x[inicial:]
+        y = y[inicial:]
+    plt.plot(x, y)  
+    plt.xlabel('N')  
+    plt.ylabel('pi_value')  
+    plt.title('Estimación de pi con Monte Carlo')  
+    plt.show()
+
+
+recargaDatos('evo_pi.csv', '\t', inicial=0)  
